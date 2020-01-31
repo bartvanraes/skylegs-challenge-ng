@@ -1,0 +1,28 @@
+<div class="flight-detail-panel">
+    <div class="info mission-info">
+        <h4>Mission ID:</h4>&nbsp;
+        <div class="info-text">
+            <span>{{flight.mission_id}}</span>
+        </div>
+    </div>
+    <div class="info departure-info">
+        <h4>Departure:</h4>&nbsp;
+        <div class="info-text">
+            <span>{{flight.departure.iata}}</span>
+        </div>
+    </div>
+    <div class="info arrival-info">
+        <h4>Arrival:</h4>&nbsp;
+        <div class="info-text">
+            <span>{{flight.arrival.iata}}</span>
+        </div>
+    </div>
+
+    <div class="info takeoff-info">
+        <h4>Takeoff:</h4>&nbsp;
+        <div class="info-text">
+            <span>{{flight.tot | date:'medium'}}</span>
+        </div>
+    </div>
+          
+</div>

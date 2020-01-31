@@ -1,0 +1,27 @@
+.flight-detail-panel {
+    padding: 5px;
+
+    .info {
+        display: inline-flex;
+
+        &.mission-info {
+            min-width: 200px;
+        }
+        
+        &.departure-info {
+            min-width: 200px;
+        }
+        
+        &.arrival-info {
+            min-width: 200px;
+        }
+
+        .info-text {
+            line-height: 32px;
+            
+            span {
+                vertical-align: middle;
+            }
+        }
+    }
+}
