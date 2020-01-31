@@ -1,5 +1,5 @@
 <div class="flight-overview container">
-    FLIGHT OVERVIEW
+    <h2>FLIGHT OVERVIEW</h2>
     <div class="flight-list">
         <!--<accordion>
             <accordion-group>
@@ -9,6 +9,8 @@
         <div *ngFor="let flight of (pagedFlights | async); let i = index" [ngClass]="{'separator': i < (pagedFlights | async).length - 1}">
             <flight-detail [flight]="flight"></flight-detail>
         </div>
-        <pagination [totalItems]="(numberOfFlights | async)" (pageChanged)="pageChanged($event)"></pagination>
+        <div class="pagination-separator">
+        </div>
+        <pagination [totalItems]="(numberOfFlights | async)" (pageChanged)="pageChanged($event)" class="paging"></pagination>
     </div>
 </div>

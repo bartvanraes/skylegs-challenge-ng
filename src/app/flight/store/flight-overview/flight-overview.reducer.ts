@@ -1,8 +1,8 @@
 import { IFlightState } from "..";
-import { FlightOverviewActions, FlightAction, GetAllFlightsFail, GetAllFlightsSuccess, UpdateCurrentFlightPage, UpdateFlightPaging } from './flight-overview.actions';
+import { FlightOverviewActions, FlightAction, GetAllFlightsFail, GetAllFlightsSuccess, UpdateCurrentFlightPage, UpdateFlightPaging, SelectFlight } from './flight-overview.actions';
 
 const defaultState: IFlightState = {
-    flight: null,
+    selectedFlight: null,
     flights: null,
     pagedFlights: null,
     currentPage: 1,
@@ -24,23 +24,26 @@ export function flightOverviewReducer(state: IFlightState = defaultState, action
                 errorFetchingFlights: (action as GetAllFlightsFail).error
             };
         case FlightAction.GET_ALL_FLIGHTS_SUCCESS:
-            //let getAllFlightsSuccessAction = (action as GetAllFlightsSuccess);
             return {
                 ...state,
                 flights: (action as GetAllFlightsSuccess).flights
-                //pagedFlights: getAllFlightsSuccessAction.flights.slice
             };
         case FlightAction.UPDATE_CURRENT_FLIGHT_PAGE:
             return {
                 ...state,
                 currentPage: (action as UpdateCurrentFlightPage).currentPage
-            }
+            };
         case FlightAction.UPDATE_FLIGHT_PAGING:
             console.log('pagedFlights reducer');
             return {
                 ...state,
                 pagedFlights: (action as UpdateFlightPaging).pagedFlights
-            }
+            };
+        case FlightAction.SELECT_FLIGHT: 
+            return {
+                ...state,
+                selectedFlight: (action as SelectFlight).selectedFlight
+            };            
         default: 
             return state;
     }

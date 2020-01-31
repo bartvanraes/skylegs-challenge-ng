@@ -9,9 +9,11 @@ import { FlightService } from '../services/flight.service';
 import { flightRoutes } from './flight.route';
 import { flightReducers } from './store';
 import { FlightOverviewEffects } from './store/flight-overview/flight-overview.effects';
-//import { LayoutModule } from '../layout/layout.module';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { FlightDetailComponent } from './flight-detail/flight-detail.component';
+import {MatIconModule} from '@angular/material/icon';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 @NgModule({
     declarations: [ 
@@ -27,7 +29,10 @@ import { FlightDetailComponent } from './flight-detail/flight-detail.component';
         EffectsModule.forFeature([
             FlightOverviewEffects
         ]),
-        PaginationModule.forRoot()
+        CollapseModule.forRoot(),
+        PaginationModule.forRoot(),
+        ButtonsModule.forRoot(),
+        MatIconModule
     ],
     providers: [
         FlightService

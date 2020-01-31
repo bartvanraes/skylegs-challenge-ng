@@ -14,7 +14,7 @@ export interface IFlightState {
     pagedFlights: Array<IFlight>;
     currentPage: number;
     errorFetchingFlights: HttpErrorResponse;
-    flight: IFlight;
+    selectedFlight: IFlight;
     errorFetchingFlight: HttpErrorResponse;
     errorUpdatingFlight: HttpErrorResponse;
 }

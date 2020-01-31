@@ -5,7 +5,7 @@ import { GetAllFlights, UpdateCurrentFlightPage } from '../store/flight-overview
 import { Subject, Subscription, BehaviorSubject, Observable } from 'rxjs';
 import { IFlight } from 'src/lib/flight';
 import { getFlightOverviewState } from '../store';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'flight-overview',
@@ -27,16 +27,19 @@ export class FlightOverviewComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.store.dispatch(new GetAllFlights());
-        this.flights = this.store.pipe(select(state => getFlightOverviewState(state).flightOverview.flights));
-        this.pagedFlights = this.store.pipe(select(state => getFlightOverviewState(state).flightOverview.pagedFlights));
+        this.flights = this.store.pipe(
+            select(state => getFlightOverviewState(state).flightOverview.flights),
+            takeUntil(this.ngUnsubscribe));
+        this.pagedFlights = this.store.pipe(
+            select(state => getFlightOverviewState(state).flightOverview.pagedFlights),
+            takeUntil(this.ngUnsubscribe));
         /*this.numberOfFlights = this.flights.pipe(
             map((flights: Array<IFlight>) => flights.length)
         )*/
 
         this.flights.subscribe((flights: Array<IFlight>) => {
             if (flights) {
-                console.log('numberOfFlights', flights.length);
-                this.numberOfFlights.next(flights.length - 1);
+                this.numberOfFlights.next(flights.length);
             } else {
                 this.numberOfFlights.next(0);
             }

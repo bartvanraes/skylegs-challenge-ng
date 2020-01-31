@@ -1,28 +1,68 @@
-<div class="flight-detail-panel">
-    <div class="info mission-info">
-        <h4>Mission ID:</h4>&nbsp;
-        <div class="info-text">
-            <span>{{flight.mission_id}}</span>
+<div>
+    <div class="flight-detail-panel" (click)="setSelectedFlight(flight)" [attr.aria-expanded]="!(isCollapsed | async)" aria-controls="collapseBasic">
+        <div class="info mission-info">
+            <h4>Mission ID:</h4>&nbsp;
+            <div class="info-text">
+                <span>{{flight.mission_id}}</span>
+            </div>
         </div>
-    </div>
-    <div class="info departure-info">
-        <h4>Departure:</h4>&nbsp;
-        <div class="info-text">
-            <span>{{flight.departure.iata}}</span>
+        <div class="info departure-info">
+            <h4>Departure:</h4>&nbsp;
+            <div class="info-text">
+                <span>{{flight.departure.iata}}</span>
+            </div>
         </div>
-    </div>
-    <div class="info arrival-info">
-        <h4>Arrival:</h4>&nbsp;
-        <div class="info-text">
-            <span>{{flight.arrival.iata}}</span>
+        <div class="info arrival-info">
+            <h4>Arrival:</h4>&nbsp;
+            <div class="info-text">
+                <span>{{flight.arrival.iata}}</span>
+            </div>
         </div>
-    </div>
 
-    <div class="info takeoff-info">
-        <h4>Takeoff:</h4>&nbsp;
-        <div class="info-text">
-            <span>{{flight.tot | date:'medium'}}</span>
+        <div class="info takeoff-info">
+            <h4>Takeoff:</h4>&nbsp;
+            <div class="info-text">
+                <span>{{flight.tot | date:'MMM d, y, h:mm a'}}</span>
+            </div>
+        </div>
+        <div class="pull-right">
+            <mat-icon *ngIf="isCollapsed | async" svgIcon="more-details" aria-hidden="false" aria-label="Show details"></mat-icon>
+            <mat-icon *ngIf="!(isCollapsed | async)" svgIcon="less-details" aria-hidden="false" aria-label="Show details"></mat-icon>
+        </div>          
+    </div>
+    <div id="collapseBasic" [collapse]="isCollapsed | async">
+        <div class="flight-extra-info">
+            <div class="left-info">
+                <div class="detail-info">
+                    <label>Mission ID:</label>&nbsp;
+                    <span>{{flight.mission_id}}</span>
+                </div>
+                <div class="detail-info">
+                    <label>Departure Airport:</label>&nbsp;
+                    <span>{{flight.departure.name}}</span>
+                </div>
+                <div class="detail-info">
+                    <label>Arrival Airport:</label>&nbsp;
+                    <span>{{flight.arrival.name}}</span>
+                </div>
+                <div class="detail-info">
+                    <label>Takeoff:</label>&nbsp;
+                    <span>{{flight.tot | date:'MMM d, y, h:mm a'}}</span>
+                </div>
+                <div class="detail-info">
+                    <label>Flight time:</label>&nbsp;
+                    <span>{{flight.flight_time}}</span>
+                </div>
+                <div class="detail-info">
+                    <label>Aircraft:</label>&nbsp;
+                    <img [src]="flight.aircraft.profile_picture_url" [alt]="flight.aircraft.label" class="aircraft-picture" />
+                </div>
+            </div>
+            <div class="right-info">
+                <button type="button" class="btn btn-primary radiation-button">
+                    Update cosmic radiation value
+                </button>
+            </div>
         </div>
     </div>
-          
 </div>

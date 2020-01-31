@@ -1,3 +1,20 @@
-.separator {
-    border-bottom: 1px solid black;
+
+.flight-list {
+    max-width: 950px;
+    min-height: 850px;
+    display: flex;
+	flex-direction: column;
+    justify-content: center;
+
+    .separator {
+        border-bottom: 1px solid black;
+    }
+
+    .pagination-separator {
+        flex-grow: 1;
+    }
+
+    .paging {
+        vertical-align: bottom;
+    }
 }

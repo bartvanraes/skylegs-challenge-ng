@@ -7,7 +7,8 @@ export enum FlightAction {
     GET_ALL_FLIGHTS_FAIL = 'Get all flight fail',
     GET_ALL_FLIGHTS_SUCCESS = 'Get all flight success',
     UPDATE_CURRENT_FLIGHT_PAGE = 'Update current flight page',
-    UPDATE_FLIGHT_PAGING = 'Update flight paging'
+    UPDATE_FLIGHT_PAGING = 'Update flight paging',
+    SELECT_FLIGHT = 'Select flight'
 }
 
 export class GetAllFlights implements Action {
@@ -30,8 +31,6 @@ export class GetAllFlightsSuccess implements Action {
     type: string = FlightAction.GET_ALL_FLIGHTS_SUCCESS;
 
     public constructor(public flights: Array<IFlight>) {
-        console.log('flights');
-        console.log(flights);
     }
 }
 
@@ -47,8 +46,13 @@ export class UpdateFlightPaging implements Action {
     type: string = FlightAction.UPDATE_FLIGHT_PAGING;
 
     public constructor(public pagedFlights: Array<IFlight>) {
-        console.log('paged flights');
-        console.log(pagedFlights);
+    }
+}
+
+export class SelectFlight implements Action {
+    type: string = FlightAction.SELECT_FLIGHT;
+
+    public constructor(public selectedFlight: IFlight) {
     }
 }
 
@@ -57,4 +61,5 @@ export type FlightOverviewActions =
     | GetAllFlightsFail
     | GetAllFlightsSuccess
     | UpdateCurrentFlightPage
-    | UpdateFlightPaging;
+    | UpdateFlightPaging
+    | SelectFlight;

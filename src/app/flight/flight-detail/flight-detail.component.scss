@@ -1,5 +1,7 @@
 .flight-detail-panel {
     padding: 5px;
+    position: relative;
+    cursor: pointer;
 
     .info {
         display: inline-flex;
@@ -22,6 +24,40 @@
             span {
                 vertical-align: middle;
             }
+        }
+    }
+
+    .pull-right {
+        display: inline-block;
+        position: absolute;
+        right: 5px;
+    }
+}
+
+.flight-detail-panel:hover {
+    background-color: lightcyan;
+}
+
+#collapseBasic {
+    padding: 20px;
+    .flight-extra-info {
+        display: flex;
+        .detail-info {
+            label {
+                min-width: 150px;
+            }
+
+            .aircraft-picture {
+                max-height: 100px;
+            }
+        }
+
+        .radiation-button {
+            margin-top: 20px;
+        }
+
+        .right-info {
+            padding-left: 30px;
         }
     }
 }
