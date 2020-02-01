@@ -55,7 +55,7 @@ export class FlightService {
 
     public getAllFlights(): Observable<Array<IFlight>> {
         // See proxy.conf.json for the root url
-        return this.http.get(`v1/flights/all?start=2019-01-01&end=2019-12-31`, httpOptions) as Observable<Array<IFlight>>;
+        return this.http.get(`v1/flights/all?start=2019-01-01&end=2020-12-31`, httpOptions) as Observable<Array<IFlight>>;
     }
 
     public updateCosmicRadiation(flight: IFlight, value: number): Observable<string> {
