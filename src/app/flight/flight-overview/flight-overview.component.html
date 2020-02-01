@@ -1,5 +1,5 @@
 <div class="flight-overview container">
-    <h2>FLIGHT OVERVIEW</h2>
+    <h2>Flight Overview</h2>
     <div class="flight-list">
         <div *ngFor="let flight of (pagedFlights | async); let i = index" [ngClass]="{'separator': i < (pagedFlights | async).length - 1}">
             <flight-detail [flight]="flight"></flight-detail>

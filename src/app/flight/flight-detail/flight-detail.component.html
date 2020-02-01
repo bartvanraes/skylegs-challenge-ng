@@ -1,4 +1,5 @@
 <div>
+    <!--MAIN PANEL-->
     <div class="flight-detail-panel" (click)="setSelectedFlight(flight)" [attr.aria-expanded]="!(isCollapsed | async)" aria-controls="collapseBasic">
         <div class="info mission-info">
             <h4>Mission ID:</h4>&nbsp;
@@ -30,6 +31,7 @@
             <mat-icon *ngIf="!(isCollapsed | async)" svgIcon="less-details" aria-hidden="false" aria-label="Show details"></mat-icon>
         </div>          
     </div>
+    <!--EXTRA DETAILS, COLLAPSED BY DEFAULT-->
     <div id="collapseBasic" [collapse]="isCollapsed | async">
         <div class="flight-extra-info">
             <div class="left-info">
@@ -59,12 +61,16 @@
                 </div>
             </div>
             <div class="right-info">
-                <button type="button" class="btn btn-primary radiation-button" (click)="openModal(template)">
-                    Update cosmic radiation value
-                </button>
+                <div class="update-button-wrapper">
+                    <button type="button" class="btn btn-primary radiation-button" (click)="openModal(template)">
+                        Update cosmic radiation value
+                    </button>
+                    <mat-icon *ngIf="updateSuccessFull | async" svgIcon="success" aria-hidden="false" aria-label="Show details" class="update-success-icon"></mat-icon>
+                </div>
             </div>
         </div>
     </div>
+    <!--RADIATION UPDATE MODAL-->
     <ng-template #template>
         <div class="modal-header">
             <h4 class="modal-title pull-left">Update cosmic radiation</h4>
@@ -86,5 +92,5 @@
             <button type="button" class="btn btn-default" (click)="decline()">Cancel</button>
             <button type="button" class="btn btn-primary" (click)="confirm()" [attr.disabled]="(this.cosmicValueForm.invalid)? true : false | async">Save</button>
         </div>
-        </ng-template>
+    </ng-template>
 </div>

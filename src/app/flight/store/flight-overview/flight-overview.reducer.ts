@@ -1,18 +1,17 @@
 import { IFlightState } from "..";
-import { FlightOverviewActions, FlightAction, GetAllFlightsFail, GetAllFlightsSuccess, UpdateCurrentFlightPage, UpdateFlightPaging, SelectFlight, UpdateRadiationDoseFail } from './flight-overview.actions';
+import { FlightOverviewActions, FlightAction, GetAllFlightsFail, GetAllFlightsSuccess, UpdateCurrentFlightPage, UpdateFlightPaging, SelectFlight, UpdateRadiationDoseFail, UpdateRadiationDoseSuccess } from './flight-overview.actions';
 
 const defaultState: IFlightState = {
     selectedFlight: null,
     flights: null,
     pagedFlights: null,
     currentPage: 1,
-    //errorFetchingFlight: null,
     errorFetchingFlights: null,
     errorUpdatingRadiationDose: null,
-    radiationDoseUpdateCounter: 0
-    //errorUpdatingFlight: null
+    radiationDoseUpdateSuccess: false
 };
 
+// The mutations in the store when an action is executed
 export function flightOverviewReducer(state: IFlightState = defaultState, action: FlightOverviewActions): IFlightState {
     switch(action.type) {
         case FlightAction.GET_ALL_FLIGHTS:
@@ -36,7 +35,6 @@ export function flightOverviewReducer(state: IFlightState = defaultState, action
                 currentPage: (action as UpdateCurrentFlightPage).currentPage
             };
         case FlightAction.UPDATE_FLIGHT_PAGING:
-            console.log('pagedFlights reducer');
             return {
                 ...state,
                 pagedFlights: (action as UpdateFlightPaging).pagedFlights
@@ -44,12 +42,14 @@ export function flightOverviewReducer(state: IFlightState = defaultState, action
         case FlightAction.SELECT_FLIGHT: 
             return {
                 ...state,
-                selectedFlight: (action as SelectFlight).selectedFlight
+                selectedFlight: (action as SelectFlight).selectedFlight,
+                radiationDoseUpdateSuccess: false
             };
         case FlightAction.UPDATE_RADIATION_DOSE: 
             return {
                 ...state,
-                errorUpdatingRadiationDose: null
+                errorUpdatingRadiationDose: null,
+                radiationDoseUpdateSuccess: false
             };
         case FlightAction.UPDATE_RADIATION_DOSE_FAIL:
             return {
@@ -57,11 +57,10 @@ export function flightOverviewReducer(state: IFlightState = defaultState, action
                 errorUpdatingRadiationDose: (action as UpdateRadiationDoseFail).error
             };
         case FlightAction.UPDATE_RADIATION_DOSE_SUCCESS:
-            // Ignore the return value of UpdateRadiationDose since the radiation dose isn't in the return data as far as I know
-            // Keep a counter to notify the frontend that the update was successful
+            // Ignore the return value of UpdateRadiationDose since the radiation dose isn't in the return data
             return {
                 ...state,
-                radiationDoseUpdateCounter: state.radiationDoseUpdateCounter + 1
+                radiationDoseUpdateSuccess: (action as UpdateRadiationDoseSuccess).success
             };
         default: 
             return state;

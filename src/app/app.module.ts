@@ -9,7 +9,6 @@ import { RootEffects } from './store/root.effects';
 import {EffectsModule} from '@ngrx/effects';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderInterceptor } from './header.interceptor';
 
 @NgModule({
   declarations: [
@@ -23,11 +22,7 @@ import { HeaderInterceptor } from './header.interceptor';
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: HeaderInterceptor,
-    multi: true
-  }],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,6 +5,7 @@ export interface IAppState {
     root: State;
 };
 
+// isLoading isn't used at the moment, but it could be used to show a spinner when the get flights call is being executed
 export interface State {
     isLoading: boolean;
 };

@@ -2,6 +2,7 @@ import { Action } from '@ngrx/store';
 import { HttpErrorResponse } from '@angular/common/http';
 import { IFlight } from 'src/lib/flight';
 
+// All the store actions for the flight module, they all have their own Action class
 export enum FlightAction {
     GET_ALL_FLIGHTS = 'Get all flights',
     GET_ALL_FLIGHTS_FAIL = 'Get all flight fail',
@@ -69,7 +70,7 @@ export class UpdateRadiationDoseFail implements Action {
 export class UpdateRadiationDoseSuccess implements Action {
     type: string = FlightAction.UPDATE_RADIATION_DOSE_SUCCESS;
 
-    public constructor(public flights: Array<IFlight>) {
+    public constructor(public success: boolean) {
     }
 }
 

@@ -16,6 +16,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
+// basically the whole application is in this module since there is only one page (with 2 components)
 @NgModule({
     declarations: [ 
         FlightOverviewComponent,

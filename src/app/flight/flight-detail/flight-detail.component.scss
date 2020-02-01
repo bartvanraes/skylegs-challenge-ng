@@ -58,6 +58,16 @@
 
         .right-info {
             padding-left: 30px;
+
+            .update-button-wrapper {
+                display: flex;
+
+                .update-success-icon {
+                    align-self: center;
+                    margin-top: 20px;
+                    margin-left: 10px;
+                }
+            }
         }
     }
 }

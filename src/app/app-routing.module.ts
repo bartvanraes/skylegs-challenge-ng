@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-
+// There is only one page so automatically redirect to it
 const routes: Routes = [
   {
     path: '',
