@@ -15,13 +15,12 @@ export interface IFlightState {
     currentPage: number;
     errorFetchingFlights: HttpErrorResponse;
     selectedFlight: IFlight;
-    errorFetchingFlight: HttpErrorResponse;
-    errorUpdatingFlight: HttpErrorResponse;
-}
-
-
+    errorUpdatingRadiationDose: HttpErrorResponse;
+    radiationDoseUpdateCounter: number;
+};
 
 export const flightReducers: ActionReducerMap<IFlightOverviewState, Action> = {
     flightOverview: flightOverviewReducer
 };
+
 export const getFlightOverviewState = createFeatureSelector<IFlightOverviewState>('flightOverview');

@@ -8,6 +8,9 @@ export enum FlightAction {
     GET_ALL_FLIGHTS_SUCCESS = 'Get all flight success',
     UPDATE_CURRENT_FLIGHT_PAGE = 'Update current flight page',
     UPDATE_FLIGHT_PAGING = 'Update flight paging',
+    UPDATE_RADIATION_DOSE = 'Update radiation dose',
+    UPDATE_RADIATION_DOSE_FAIL = 'Update radiation dose fail',
+    UPDATE_RADIATION_DOSE_SUCCESS = 'Update radiation dose success',
     SELECT_FLIGHT = 'Select flight'
 }
 
@@ -49,6 +52,27 @@ export class UpdateFlightPaging implements Action {
     }
 }
 
+export class UpdateRadiationDose implements Action {
+    type: string = FlightAction.UPDATE_RADIATION_DOSE;
+
+    public constructor(public flight: IFlight, public radiationDose: number) {
+    }
+}
+
+export class UpdateRadiationDoseFail implements Action {
+    type: string = FlightAction.UPDATE_RADIATION_DOSE_FAIL;
+
+    public constructor(public error: HttpErrorResponse) {
+    }
+}
+
+export class UpdateRadiationDoseSuccess implements Action {
+    type: string = FlightAction.UPDATE_RADIATION_DOSE_SUCCESS;
+
+    public constructor(public flights: Array<IFlight>) {
+    }
+}
+
 export class SelectFlight implements Action {
     type: string = FlightAction.SELECT_FLIGHT;
 
@@ -62,4 +86,7 @@ export type FlightOverviewActions =
     | GetAllFlightsSuccess
     | UpdateCurrentFlightPage
     | UpdateFlightPaging
+    | UpdateRadiationDose
+    | UpdateRadiationDoseFail
+    | UpdateRadiationDoseSuccess
     | SelectFlight;

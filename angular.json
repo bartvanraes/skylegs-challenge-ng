@@ -70,7 +70,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "skylegs-challenge-ng:build"
+            "browserTarget": "skylegs-challenge-ng:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {

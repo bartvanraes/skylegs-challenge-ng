@@ -1,0 +1,7 @@
+{
+    "/v1/*": {
+        "target": "http://api.skylegs-staging.com",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}
