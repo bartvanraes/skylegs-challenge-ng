@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Effect, Actions, ofType } from '@ngrx/effects';
-import {catchError, map, switchMap, withLatestFrom, filter} from 'rxjs/operators';
+import { catchError, map, switchMap, withLatestFrom } from 'rxjs/operators';
 import { FlightAction, GetAllFlights, GetAllFlightsSuccess, GetAllFlightsFail, UpdateFlightPaging, UpdateCurrentFlightPage, UpdateRadiationDose, UpdateRadiationDoseSuccess, UpdateRadiationDoseFail } from './flight-overview.actions';
 import { FlightService } from 'src/app/services/flight.service';
-import {Observable, of} from 'rxjs';
-import {Action, Store} from '@ngrx/store';
+import { Observable, of } from 'rxjs';
+import { Action, Store } from '@ngrx/store';
 import { IFlight } from 'src/lib/flight';
 import { IFlightOverviewState } from '..';
 

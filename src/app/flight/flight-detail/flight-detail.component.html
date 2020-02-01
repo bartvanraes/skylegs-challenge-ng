@@ -88,9 +88,10 @@
                     {{ showError | async }}
                 </div>
             </div>
-            
-            <button type="button" class="btn btn-default" (click)="decline()">Cancel</button>
-            <button type="button" class="btn btn-primary" (click)="confirm()" [attr.disabled]="(this.cosmicValueForm.invalid)? true : false | async">Save</button>
+            <div class="buttons">
+                <button type="button" class="btn btn-secondary pull-left" (click)="decline()">Cancel</button>
+                <button type="button" class="btn btn-primary pull-right" (click)="confirm()" [attr.disabled]="(this.cosmicValueForm.invalid)? true : false | async">Save</button>
+            </div>
         </div>
     </ng-template>
 </div>

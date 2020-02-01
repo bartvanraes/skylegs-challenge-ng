@@ -4,11 +4,5 @@
         "secure": false,
         "logLevel": "debug",
         "changeOrigin": true
-    },
-    "/post/*": {
-        "target": "https://postman-echo.com",
-        "secure": false,
-        "logLevel": "debug",
-        "changeOrigin": true
     }
 }

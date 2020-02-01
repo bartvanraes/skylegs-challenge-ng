@@ -7,15 +7,15 @@
         display: inline-flex;
 
         &.mission-info {
-            min-width: 200px;
+            min-width: 100%;
         }
         
         &.departure-info {
-            min-width: 200px;
+            min-width: 100%;
         }
         
         &.arrival-info {
-            min-width: 200px;
+            min-width: 100%;
         }
 
         .info-text {
@@ -28,9 +28,7 @@
     }
 
     .pull-right {
-        display: inline-block;
-        position: absolute;
-        right: 5px;
+        float: right;
     }
 }
 
@@ -80,5 +78,30 @@
     .cosmic-value-error {
         color: red;
         margin-bottom: 10px;
+    }
+
+    .buttons {
+        .pull-right {
+            float: right;
+        }
+    }
+}
+
+@media (min-width: 1440px) {
+    .flight-detail-panel {
+    
+        .info {    
+            &.mission-info {
+                min-width: 200px;
+            }
+            
+            &.departure-info {
+                min-width: 200px;
+            }
+            
+            &.arrival-info {
+                min-width: 200px;
+            }
+        }
     }
 }

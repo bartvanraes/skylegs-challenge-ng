@@ -7,7 +7,7 @@ import { StoreModule } from '@ngrx/store';
 import * as fromRoot from './store/index';
 import { RootEffects } from './store/root.effects';
 import {EffectsModule} from '@ngrx/effects';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
