@@ -57,7 +57,8 @@
                 </div>
                 <div class="detail-info">
                     <label>Aircraft:</label>&nbsp;
-                    <img [src]="flight.aircraft.profile_picture_url" [alt]="flight.aircraft.label" class="aircraft-picture" />
+                    <img *ngIf="flight.aircraft.profile_picture_url !== null" [src]="flight.aircraft.profile_picture_url" [alt]="flight.aircraft.label" class="aircraft-picture" />
+                    <img *ngIf="flight.aircraft.profile_picture_url === null" src="assets/img/default-airplane.jpg" [alt]="flight.aircraft.label" class="aircraft-picture" />
                 </div>
             </div>
             <div class="right-info">

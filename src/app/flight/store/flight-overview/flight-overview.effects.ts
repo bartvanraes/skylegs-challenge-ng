@@ -57,8 +57,8 @@ export class FlightOverviewEffects {
     updateRadiationDose: Observable<Action> = this.actions$.pipe(
         ofType(FlightAction.UPDATE_RADIATION_DOSE),
         switchMap((action: UpdateRadiationDose) => this.flightService.updateCosmicRadiation(action.flight, action.radiationDose)),
-        map((res: string) => {
-            return new UpdateRadiationDoseSuccess(res === 'Data received.')
+        map((res: IFlight) => {
+            return new UpdateRadiationDoseSuccess(res !== null && res.mission_id !== null)
         }),
         catchError(err => of(new UpdateRadiationDoseFail(err)))
     );

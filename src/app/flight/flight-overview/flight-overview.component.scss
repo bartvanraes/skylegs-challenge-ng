@@ -6,10 +6,13 @@
     }
 
     .flight-list {
-        min-height: 825px;
+        min-height: 775px;
         display: flex;
         flex-direction: column;
         justify-content: center;
+
+        border: 1px solid lightgray;
+        padding: 3px;
 
         .separator {
             border-bottom: 1px solid black;
@@ -18,11 +21,12 @@
         .pagination-separator {
             flex-grow: 1;
         }
-
-        .paging {
-            vertical-align: bottom;
-            display: none;
-        }
+    }
+    
+    .paging {
+        vertical-align: bottom;
+        margin-top: 10px;
+        display: none;
     }
 }
 
@@ -36,10 +40,8 @@
 
 @media (min-width: 1024px) {
     .flight-overview {    
-        .flight-list {
-            .paging {
-                display: block;
-            }
+        .paging {
+            display: block;
         }
     }
 }

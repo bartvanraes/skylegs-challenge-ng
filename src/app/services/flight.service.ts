@@ -6,8 +6,8 @@ import {Md5} from 'ts-md5/dist/md5';
 
 
 const skyLegsHeaders: HttpHeaders = new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': 'Basic ' + btoa('skylegs-hiring-2020:skylegs-hiring-token'), // in a real application these values should come from a config file
+    'Content-Type': 'application/json'/*,
+    'Authorization': 'Basic ' + btoa('skylegs-hiring-2020:skylegs-hiring-token'), // in a real application these values should come from a config file*/
 });
 
 const httpOptions = {
@@ -55,30 +55,23 @@ export class FlightService {
 
     public getAllFlights(): Observable<Array<IFlight>> {
         // See proxy.conf.json for the root url
-        return this.http.get(`v1/flights/all?start=2019-01-01&end=2020-12-31`, httpOptions) as Observable<Array<IFlight>>;
+        return this.http.get(`v1/flights`, httpOptions) as Observable<Array<IFlight>>;
     }
 
-    public updateCosmicRadiation(flight: IFlight, value: number): Observable<string> {
+    public updateCosmicRadiation(flight: IFlight, value: number): Observable<IFlight> {
         // Since the pdf document isn't really clear which exact fields has to be added to the body I took the ones that sounded most logical
         const md5Certificate: string = Md5.hashStr(`${flight.aircraft.registration}${flight.departure.icao}${flight.arrival.icao}${flight.tot}SKY2019${value}`) as string;
 
-        const body: Array<any> = [
+        const body: any = 
             { 
-                FlightLog: 'SKYLEGS-TEST',              // Can't find this in the get request data, so it's hardcoded
-                ACFTAIL: flight.aircraft.registration,
-                DEP: flight.departure.icao,
-                DEST: flight.arrival.icao,
-                STD: flight.tot,                        // or obt?
-                STA: flight.ldt,                        // or ibt?
-                ATCID: 'SKY2019',                       // Can't find this in the get request data, so it's hardcoded,
-                DOSE: value,
-                Certificate: md5Certificate
+                FlightMissionId: flight.mission_id,      // Can't find this in the get request data, so it's hardcoded,
+                Dose: value,
             }
-        ];
+        ;
          
-        return this.http.post(`v1/flights/store-radiation`, body, { 
+        return this.http.post(`v1/flights/store-radiation`, body/*, { 
             headers: skyLegsHeaders,
-            responseType: 'text' // expected response: 'Data received.'
-        }) as Observable<string>;
+            responseType: 'application/json' // expected response: 'Data received.'
+        }*/) as Observable<IFlight>;
     }
 }
